@@ -1,0 +1,56 @@
+name: keys_build
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - altgraph=0.16.1=py_0
+  - blas=2.6=openblas
+  - ca-certificates=2019.3.9=hecc5488_0
+  - certifi=2019.3.9=py37_0
+  - freetype=2.10.0=h5db478b_0
+  - future=0.17.1=py37_1000
+  - jpeg=9c=hfa6e2cd_1001
+  - libblas=3.8.0=6_openblas
+  - libcblas=3.8.0=6_openblas
+  - libflang=5.0.0=h6538335_20180525
+  - liblapack=3.8.0=6_openblas
+  - liblapacke=3.8.0=6_openblas
+  - libpng=1.6.37=h7602738_0
+  - libtiff=4.0.10=h36446d0_1001
+  - llvm-meta=5.0.0=0
+  - m2w64-gcc-libgfortran=5.3.0=6
+  - m2w64-gcc-libs=5.3.0=7
+  - m2w64-gcc-libs-core=5.3.0=7
+  - m2w64-gmp=6.1.0=2
+  - m2w64-libwinpthread-git=5.0.0.4634.697f757=2
+  - macholib=1.11=py_0
+  - msys2-conda-epoch=20160418=1
+  - numpy=1.16.3=py37h873a0b8_0
+  - olefile=0.46=py_0
+  - openblas=0.3.5=h8448af6_1001
+  - openmp=5.0.0=vc14_1
+  - openssl=1.1.1b=hfa6e2cd_2
+  - pefile=2019.4.18=py_0
+  - pillow=6.0.0=py37h9a613e6_0
+  - pip=19.0.3=py37_0
+  - pycrypto=2.6.1=py37hfa6e2cd_1002
+  - pyinstaller=3.4=py37h7602738_1
+  - python=3.7.3=hb12ca83_0
+  - pywin32=224=py37hfa6e2cd_1000
+  - pywin32-ctypes=0.2.0=py37_1000
+  - setproctitle=1.1.10=py37hfa6e2cd_1001
+  - setuptools=41.0.0=py37_0
+  - sqlite=3.26.0=hfa6e2cd_1001
+  - tk=8.6.9=hfa6e2cd_1001
+  - vc=14=0
+  - vs2015_runtime=14.0.25420=0
+  - wheel=0.33.1=py37_0
+  - wincertstore=0.2=py37_1002
+  - zlib=1.2.11=h2fa13f4_1004
+  - pip:
+    - keyboard==0.13.3
+    - pypiwin32==223
+    - pystray==0.14.4
+    - thespian==3.9.9
+    - win10toast==0.9
+

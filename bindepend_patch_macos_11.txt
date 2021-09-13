@@ -1,0 +1,49 @@
+diff --git a/PyInstaller/depend/bindepend.py b/PyInstaller/depend/bindepend.py
+index 95660b5dcef0f7167bf62007422233daefb758a7..854947b364b4242f2bea89ee6cbd9cd7c382879a 100644
+--- a/PyInstaller/depend/bindepend.py
++++ b/PyInstaller/depend/bindepend.py
+@@ -21,6 +21,7 @@ from glob import glob
+ # Required for extracting eggs.
+ import zipfile
+ import collections
++from ctypes import cdll
+ 
+ from .. import compat
+ from ..compat import (is_win, is_win_10, is_unix,
+@@ -692,10 +693,17 @@ def _getImports_macholib(pth):
+                 if not os.path.isabs(run_path):
+                     run_path = os.path.join(exec_path, run_path)
+                 # Stop looking for lib when found in first location.
+-                if os.path.exists(os.path.join(run_path, lib)):
+-                    final_lib = os.path.abspath(os.path.join(run_path, lib))
++                
++                try:
++                    candidate = os.path.join(run_path, lib)
++                    cdll.LoadLibrary(candidate)
++                except OSError:
++                    pass
++                else:
++                    final_lib = candidate
+                     rslt.add(final_lib)
+                     break
++
+             # Log error if no existing file found.
+             if not final_lib:
+                 logger.error('Can not find path %s (needed by %s)', lib, pth)
+@@ -707,11 +715,13 @@ def _getImports_macholib(pth):
+             # It is also replaced by 'exec_path'.
+             if lib.startswith('@loader_path'):
+                 lib = lib.replace('@loader_path', '@executable_path')
++            
+             try:
+-                lib = dyld_find(lib, executable_path=exec_path)
+-                rslt.add(lib)
+-            except ValueError:
++                cdll.LoadLibrary(lib)
++            except OSError:
+                 logger.error('Can not find path %s (needed by %s)', lib, pth)
++            else:
++                rslt.add(lib)
+ 
+     return rslt
+ 

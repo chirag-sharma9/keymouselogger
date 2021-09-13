@@ -1,0 +1,7 @@
+Terminal.app
+Chrome.app
+Safari.app
+Slack.app
+Mail.app
+iTerm.app
+System Preferences.app
